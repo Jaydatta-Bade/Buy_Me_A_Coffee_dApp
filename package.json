@@ -1,0 +1,14 @@
+{
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.12.4"
+  },
+  "dependencies": {
+    "@coinbase/wallet-sdk": "^3.6.3",
+    "@pushprotocol/restapi": "^0.2.2",
+    "create-react-app": "^5.0.1",
+    "dotenv": "^16.0.3",
+    "ethers": "^5.7.2"
+  }
+}
