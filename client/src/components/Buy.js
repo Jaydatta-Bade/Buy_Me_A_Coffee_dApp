@@ -1,6 +1,8 @@
 import * as PushAPI from "@pushprotocol/restapi";
 import * as ethers from "ethers";
 
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+require("dotenv").config();
 
 
 
@@ -21,8 +23,8 @@ const Buy = ({ state}) => {
   };
 
   async function notify() {
-    const PK = 'your_channel_address_secret_key'; // channel private key
-    const Pkey = `0x${PK}`;
+    const PK = process.env.PRIVATE_KEY; 
+    const Pkey = `0x09a085bd6d8abe8aa6a26fc01828a3d75f2cb8a260655b4580b08339e96cbddb`;
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner()
     const address = await signer.getAddress();
@@ -31,8 +33,8 @@ const Buy = ({ state}) => {
     try {
       const apiResponse = await PushAPI.payloads.sendNotification({
         signer,
-        type: 3, // target
-        identityType: 2, // direct payload
+        type: 3,
+        identityType: 2,
         notification: {
           title: `[SDK-TEST] notification TITLE:`,
           body: `[sdk-test] notification BODY`
@@ -43,8 +45,8 @@ const Buy = ({ state}) => {
           cta: '',
           img: ''
         },
-        recipients: `eip155:5:${address}`, // recipient address
-        channel: 'eip155:5:0xD8634C39BBFd4033c0d3289C4515275102423681', // your channel address
+        recipients: `eip155:5:${address}`, 
+        channel: 'eip155:5:0x7A2C1B1845a2DCca67DE860531bbDA2Bd4E155B4',
         env: 'staging'
       });
       
